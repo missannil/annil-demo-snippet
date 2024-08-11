@@ -1,0 +1,34 @@
+<!--pages/computed/computed.wxml-->
+<topNav
+	twTitle="{{topNav_twTitle}}"
+	title="{{topNav_title}}"
+	bind:tap="topNav_tap"
+>
+	<view class="pl-20 primary">
+		<i class="i-arrowLeft" />
+		<text decode>&nbsp;返回</text>
+	</view>
+</topNav>
+<subComp num="{{subComp_num}}" />
+<view
+	age="{{sub_age}}"
+	id="subStore"
+></view>
+<view class="m-20 text-center text-40">computed字段</view>
+<view class="m-20">
+	<text
+		user-select
+		space="nbsp"
+		class="text-40"
+	>
+		1. 计算属性初始化在实例初始化之前,可以通过this.data使用任意数据(properties,store,data,其他的computed,根数据)。
+
+		2. 由于小程序properties的对象属性默认值为null,所以在computed中使用properties中的对象属性时,需要判断是否为null。ts类型会给您提示。
+
+		3. 当计算属性依赖的数据发生变化时,会自动更新计算属性的值。
+
+		4. 计算属性函数的this下,除了data字段外(其他为undefined),且data字段只读的,不可修改。(运行时检测)
+
+		5. 当遇到类型错误时,先显式书写出计算函数的返回值类型。
+	</text>
+</view>

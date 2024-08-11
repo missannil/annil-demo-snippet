@@ -1,0 +1,26 @@
+<view class="size-full flex flex-col bg-gray-100">
+	<topNav
+		twTitle="{{topNav_twTitle}}"
+		title="{{topNav_title}}"
+	/>
+
+	<view class="flex-1 overflow-hidden">
+		<block wx:if="{{home_ready}}">
+			<home />
+		</block>
+		<block wx:if="{{install_ready}}">
+			<install />
+		</block>
+		<block wx:if="{{demo_ready}}">
+			<demo />
+		</block>
+	</view>
+	<divider classes="h-1 bg-gray-200" />
+	<tabbar
+		twActiveColor="{{tabbar_twActiveColor}}"
+		twInactiveColor="{{tabbar_twInactiveColor}}"
+		tabbarList="{{tabbarList}}"
+		activeIndex="{{activeIndex}}"
+		bind:onActiveIndexChanged="tabbar_onActiveIndexChanged"
+	/>
+</view>

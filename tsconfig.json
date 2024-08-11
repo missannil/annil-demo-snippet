@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "moduleResolution": "node",
+    "skipLibCheck": true, // 跳过声明文件的类型检查(.d.ts)。
+    "esModuleInterop": true, // 默认false. 兼容非ES模块引用的写法(如 import type mobx from 'mobx'等).
+    "strict": true, // 启用严格模式
+    "noEmit": true, // 编译时不生成文件。
+    "exactOptionalPropertyTypes": true, // 带有?标志的属性类型不在包含undefined类型
+    "strictFunctionTypes": false, // 忽略函数参数逆变引起的问题
+    "types": [
+      "hry-types",
+      "mobx",
+      "miniprogram-api-typings"
+    ]
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}

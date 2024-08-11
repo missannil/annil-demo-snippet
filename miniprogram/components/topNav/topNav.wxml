@@ -1,0 +1,12 @@
+<!-- components/top_nav/top_nav.wxml 顶部导航栏 -->
+<view
+	class="flex items-center {{twWrapper}}"
+	style="padding-top:{{statusBarHeight}};height:{{customNavHeight}}"
+>
+	<!--左面部分-->
+	<view class="w-1F3 {{twSlot}}">
+		<slot />
+	</view>
+	<!-- 中间title部分 -->
+	<view class="w-1F3 text-center {{twTitle}}">{{title}}</view>
+</view>

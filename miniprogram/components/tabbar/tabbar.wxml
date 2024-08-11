@@ -1,0 +1,25 @@
+<view class="flex justify-around {{twWrapper}}">
+	<block
+		wx:for="{{tabbarList}}"
+		wx:key="name"
+	>
+		<!-- 循环生成item  -->
+		<view
+			catch:tap="onTap"
+			class="flex flex-col items-center justify-evenly {{ index === activeIndex ? twActiveColor : twInactiveColor }} {{twItem}}"
+			data-index="{{ index }}"
+		>
+			<!-- 字体图标 -->
+			<i class="relative {{index == activeIndex ? item.icon.selected : item.icon.default}} {{twIcon}}">
+				<!-- 徽标 -->
+				<block wx:if="{{ item.badge > 0}}">
+					<view
+						class="absolute rounded-full flex items-center justify-center {{twBadge}}"
+					>{{ item.badge }}</view>
+				</block>
+			</i>
+			<!-- 名称 -->
+			<text class="{{twName}}">{{ item.name }}</text>
+		</view>
+	</block>
+</view>

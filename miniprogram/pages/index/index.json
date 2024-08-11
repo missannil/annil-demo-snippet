@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "topNav": "../../components/topNav/topNav",
+    "home": "./components/home/home",
+    "install": "./components/install/install",
+    "demo": "./components/demo/demo",
+    "tabbar": "../../components/tabbar/tabbar"
+  }
+}

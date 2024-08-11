@@ -1,0 +1,34 @@
+<!--pages/watch/watch.wxml-->
+<topNav
+	twTitle="{{topNav_twTitle}}"
+	title="{{topNav_title}}"
+	bind:tap="topNav_tap"
+>
+	<view class="pl-20 primary">
+		<i class="i-arrowLeft" />
+		<text decode>&nbsp;返回</text>
+	</view>
+</topNav>
+<subComp
+	name="{{subComp_name}}"
+	age="{{subComp_age}}"
+/>
+<view class="m-20 text-center text-40">watch字段</view>
+<view class="m-20">
+	<text
+		user-select
+		space="nbsp"
+		class="text-40"
+	>
+		1. 可监控任意数据,包括properties、store、data、computed。子组件watch也可监控根组件数据。
+
+		2. 只有在数据变化(深度比较)时才会触发监控函数
+
+		3. 可监听某个子属性。例如：一级子属性"Duser.age", 二级子属性"xxx.yyy.zzz". 
+		ts下但不推荐超过一级子属性的监听,会导致类型系统奔溃,因为内部只写了一级子属性的类型约束和检测。
+
+		4. ts开发下,在监控计算属性数据时,需要手动书写参数类型。
+
+		5. 在watch函数中调用this.setData时应避免死循环(例如: A改变时setDataB,B改变时setDataA)
+	</text>
+</view>

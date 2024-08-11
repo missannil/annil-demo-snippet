@@ -1,0 +1,64 @@
+<scroll-view
+	class="h-full p-20 leading-50"
+	scroll-y
+>
+	<text
+		user-select
+		space="nbsp"
+		class
+	>
+		1. 依赖安装
+		- 必装
+		```bash
+		    npm i annil
+		```
+		- 可选
+		使用ts开发时 hry-types为annil依赖的类型库,属于同一开发者。
+		```bash
+		    npm --save-dev typescript hry-types miniprogram-api-typings
+		```
+		```bash
+		# 使用状态管理
+		    npm i mobx
+		```
+		2. 构建npm
+		若使用mobx(当前mobx为6.x.x),在构建npm前需要手动更改`node_modules/mobx/dist/index.js`文件
+		避免构建时出现 `ReferenceError: process is not defined` 错误。
+		```js
+		    // 更改前
+		    "use strict";
+		    if (process.env.NODE_ENV === "production") {
+		    module.exports = require("./mobx.cjs.production.min.js"); // 仅保留这行即可
+		    } else {
+		    module.exports = require("./mobx.cjs.development.js");
+		    }
+		```
+		```js
+		    // 更改后
+		    "use strict";
+		    module.exports = require("./mobx.cjs.production.min.js");
+		```
+		开发者工具左上部工具栏——工具——构建npm
+		3. tsconfig.json推荐配置(使用ts开发时)
+		{
+		  "compilerOptions": {
+		  "target": "ES2022",
+		  "moduleResolution": "node",
+		  "skipLibCheck": true, // 跳过声明文件的类型检查(.d.ts)。
+		  "esModuleInterop": true, // 默认false. 兼容非ES模块引用的写法(如 import type mobx from   'mobx'等).
+		  "strict": true, // 启用严格模式
+		  "exactOptionalPropertyTypes": true, // 带有?标志的属性类型不在包含undefined类型
+		  "noEmit": true, // 编译时不生成文件。
+		  "strictFunctionTypes": false, // 忽略函数参数逆变引起的问题
+		  "types": [
+		    "hry-types",
+		    "mobx",
+		    "miniprogram-api-typings"
+		  ]
+		},
+		  "include": [
+		    "**/*.ts"
+		  ]
+		}
+	</text>
+</scroll-view>

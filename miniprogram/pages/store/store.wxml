@@ -1,0 +1,32 @@
+<topNav
+	twTitle="{{topNav_twTitle}}"
+	title="{{topNav_title}}"
+	bind:tap="topNav_tap"
+>
+	<view class="pl-20 primary">
+		<i class="i-arrowLeft" />
+		<text decode>&nbsp;返回</text>
+	</view>
+</topNav>
+<view
+	age="{{sub_age}}"
+	id="subStore"
+></view>
+<view class="m-20 text-center text-40">store字段</view>
+<view class="m-20">
+	<text
+		space="nbsp"
+		class="text-40"
+		user-select
+	>
+		1. store数据基于mobx生成的响应式数据。推荐使用最新的mobx,性能更好。
+
+		2. store数据变化,通过深度比较,判定是否触发this.setData修改实例数据。
+
+		3. 修改store数据,要使用store的内部方法才可以。
+
+		4. 当发现数据变化没有符合预期时,应检测store数据是否为响应式数据(或许忘写了什么)
+
+		5. store数据初始化在组件实例建立之前时,建立reaction在attached生命周期并会检查当前值是否和初始化时值是否一致,不一致立即setData一次,避免因为实例缓存,二次打开同一页面引起的数据不同步问题。
+	</text>
+</view>

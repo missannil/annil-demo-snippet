@@ -1,0 +1,15 @@
+<view class="flex-center flex-col text-50 leading-200">
+	<view
+		class="h-200"
+		bind:tap="toStore"
+	>store字段说明及使用方法</view>
+	<view
+		class="h-200"
+		bind:tap="toWatch"
+	>watch字段说明及使用方法</view>
+	<view
+		class="h-200"
+		bind:tap="toComputed"
+	>computed字段说明及使用方法</view>
+</view>
+<view class="h-200  text-40 font-bold text-center">详情见 https://github.com/missannil/annil </view>

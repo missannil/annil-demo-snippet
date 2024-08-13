@@ -1,8 +1,10 @@
 import { DefineComponent, type ExtendComponentType, RootComponent, SubComponent } from "annil";
 import type { $TopNav } from "../../components/topNav/topNav";
 import { userStore } from "../../moudule/userStore";
+
 // 为TopNav组件添加solt的事件
 type $TopNavExtend = ExtendComponentType<$TopNav, { customEvents: { topNav_tap: null } }>;
+
 const topNav = SubComponent<Root, $TopNavExtend>()({
   data: {
     topNav_title: "store",
@@ -10,7 +12,7 @@ const topNav = SubComponent<Root, $TopNavExtend>()({
   },
   events: {
     topNav_tap() {
-      wx.navigateBack();
+      void wx.navigateBack();
     },
   },
 });
@@ -25,7 +27,9 @@ const subStore = SubComponent<Root, { properties: { sub_age: number } }>()({
     },
   },
 });
+
 type Root = typeof rootComponent;
+
 // 根组件store的使用
 const rootComponent = RootComponent()({
   isPage: true,
@@ -40,8 +44,11 @@ const rootComponent = RootComponent()({
   lifetimes: {
     attached() {
       console.log(1);
+
       userStore.changeName("zhang");
+
       console.log(3);
+
       userStore.changeAge(20);
     },
   },

@@ -7,7 +7,7 @@ const rootComponent = RootComponent()({
   events: {
     toWatch() {
       // 原生wx.navigateTo的语法糖,搭配组件构建API使用,在onLoad(load)生命周期中可直接获取值并支持特殊字符`:/?#[]@!$&'()*+,;=`
-      navigateTo<$Watch>({
+      void navigateTo<$Watch>({
         url: "/pages/watch/watch",
         data: {
           user: { name: "zhao", age: 20 },
@@ -16,12 +16,12 @@ const rootComponent = RootComponent()({
       });
     },
     toStore() {
-      navigateTo<$Store>({
+      void navigateTo<$Store>({
         url: "/pages/store/store",
       });
     },
     toComputed() {
-      navigateTo<$Computed>({
+      void navigateTo<$Computed>({
         url: "/pages/computed/computed",
         data: {
           Puser: { name: "zhao", age: 20 },

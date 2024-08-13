@@ -1,8 +1,10 @@
 import { DefineComponent, type DetailedType, type ExtendComponentType, RootComponent, SubComponent } from "annil";
 import type { $TopNav } from "../../components/topNav/topNav";
 import { User, userStore } from "../../moudule/userStore";
+
 // 为TopNav组件添加solt的事件
 type $TopNavExtend = ExtendComponentType<$TopNav, { customEvents: { topNav_tap: null } }>;
+
 const topNav = SubComponent<Root, $TopNavExtend>()({
   data: {
     topNav_title: "watch",
@@ -10,8 +12,9 @@ const topNav = SubComponent<Root, $TopNavExtend>()({
   },
   events: {
     topNav_tap(e) {
-      // e.detail null
-      wx.navigateBack();
+      e.detail; //  null
+
+      void wx.navigateBack();
     },
   },
 });
@@ -50,7 +53,9 @@ const subComp = SubComponent<Root, { properties: { subComp_age: number; subComp_
     },
   },
 });
+
 type Root = typeof rootComponent;
+
 const rootComponent = RootComponent()({
   isPage: true,
   properties: {
@@ -85,7 +90,7 @@ const rootComponent = RootComponent()({
     name(newValue, oldValue) {
       console.log(7.1, newValue, oldValue); // 7.1 "li" "zhao"
     },
-    // @ts-ignore 多级监听没有内部类型，会报错导致类型系统奔溃,不建议使用。
+    // // @ts-ignore 多级监听没有内部类型，会报错导致类型系统奔溃,不建议使用。
     // "multipleObj.subObj.num"(newValue: string, oldValue: string) {
     //   // console.log('多级监控', newValue, oldValue); // 多级监控 20 18
     // },
@@ -96,14 +101,17 @@ const rootComponent = RootComponent()({
   pageLifetimes: {
     onLoad(prop) {
       console.log(4, "prop.user", prop.user); // 4 { name: "zhao", age: 20 }
+
       // 使用 annil提供的 navigateTo触发跳转页面,支持特殊字符
       console.log(5, "prop.multipleObj", prop.multipleObj); // { subObj: { num: 18 }, str: ":?#$%^&*(={}" }
+
       this.setData({
         // 触发一级监听
         "Duser.age": 30,
-        // @ts-ignore 触发多级监听 不建议使用
+        // // @ts-ignore 触发多级监听 不建议使用
         // "multipleObj.subObj.num": 20,
       });
+
       userStore.changeName("li");
     },
   },

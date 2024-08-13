@@ -3,26 +3,34 @@
   "version": "1.0.0",
   "main": ".eslintrc.js",
   "scripts": {
-    "watch": "tsc --watch --noEmit",
+    "prepare": "husky install",
+    "tsc": "tsc --watch --noEmit",
     "fmt": "dprint fmt",
     "tw": "tailwindcss -o miniprogram/styles/tailwind.out.wxss --watch",
-    "lint": "eslint . --fix && dprint check || dprint fmt",
-    "dev": "concurrently \"npm:tw\" \"npm:watch\""
+    "lint": "eslint . --fix --max-warnings 0",
+    "dev": "concurrently \"npm:tw\" \"npm:tsc\"",
+    "check": "eslint . --fix --max-warnings 0 && (dprint check || (dprint fmt && exit 1))"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@commitlint/config-conventional": "^18.6.3",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "commitlint": "^18.6.1",
     "concurrently": "^8.2.2",
+    "hry-miniprogram-api-typings": "^3.12.3",
     "hry-types": "^0.18.1",
-    "miniprogram-api-typings": "^3.12.2",
+    "eslint": "^8.57.0",
+    "husky": "^8.0.3",
     "miniprogram-tailwind-preset": "^0.6.0",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "annil": "^1.7.6",
+    "annil": "^1.7.7",
     "mobx": "^6.13.1"
   }
 }

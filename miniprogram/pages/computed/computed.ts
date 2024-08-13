@@ -1,8 +1,10 @@
 import { DefineComponent, DetailedType, type ExtendComponentType, RootComponent, SubComponent } from "annil";
 import type { $TopNav } from "../../components/topNav/topNav";
 import { User, userStore } from "../../moudule/userStore";
+
 // 为TopNav组件添加solt的事件
 type $TopNavExtend = ExtendComponentType<$TopNav, { customEvents: { topNav_tap: null } }>;
+
 const topNav = SubComponent<Root, $TopNavExtend>()({
   data: {
     topNav_title: "computed",
@@ -10,8 +12,9 @@ const topNav = SubComponent<Root, $TopNavExtend>()({
   },
   events: {
     topNav_tap(e) {
-      // e.detail null
-      wx.navigateBack();
+      e.detail; // null
+
+      void wx.navigateBack();
     },
   },
 });
@@ -25,21 +28,34 @@ const subComp = SubComponent<Root, { properties: { subComp_num: number } }>()({
   pageLifetimes: {
     onLoad(props) {
       console.log("props.Puser", props.Puser); // {name: "zhao", age: 20}
+
       console.log("props.Pnum", props.Pnum); // undefined
+
       console.log(this.data.Cage); // 19
+
       console.log(this.data.CPnum); // 2
+
       console.log(this.data.age); // 18
+
       console.log(this.data.CPobj); // 20
+
       console.log(this.data.subComp_num); // 59
+
       userStore.changeAge(20);
+
       console.log(this.data.Cage); // 21
+
       console.log(this.data.CPnum); // 2
+
       console.log(this.data.age); // 20
+
       console.log(this.data.CPobj); // 20
+
       console.log(this.data.subComp_num); // 63
     },
   },
 });
+
 type Root = typeof rootComponent;
 
 const rootComponent = RootComponent()({
@@ -68,7 +84,9 @@ const rootComponent = RootComponent()({
     },
     // 使用properties选传数据,如果是对象类型,需要判断是否存在(传值晚于页面初始化,计算属性初始化在实例构建之前)
     CPobj() {
-      return this.data.Puser?.age || 0;
+      const { Puser } = this.data;
+
+      return Puser === null ? 0 : Puser.age;
     },
   },
 });

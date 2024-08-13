@@ -13,9 +13,9 @@
 		    npm i annil
 		```
 		- 可选
-		使用ts开发时 hry-types为annil依赖的类型库,属于同一开发者。
+		使用ts开发时 hry-types为annil依赖的类型库,hry-miniprogram-api-typings为官方(miniprogram-api-typings)的类型补全库。
 		```bash
-		    npm --save-dev typescript hry-types miniprogram-api-typings
+		    npm --save-dev typescript hry-types hry-miniprogram-api-typings
 		```
 		```bash
 		# 使用状态管理
@@ -51,9 +51,10 @@
 		  "noEmit": true, // 编译时不生成文件。
 		  "strictFunctionTypes": false, // 忽略函数参数逆变引起的问题
 		  "types": [
+		  	"annil",
 		    "hry-types",
-		    "mobx",
-		    "miniprogram-api-typings"
+		    "hry-miniprogram-api-typings",
+			"mobx",
 		  ]
 		},
 		  "include": [

@@ -14,6 +14,7 @@ const topNav = SubComponent<Root, $TopNav>()({
   computed: {
     topNav_title() { // 建议书写返回类型 :string
       const { activeIndex } = this.data;
+
       return activeIndex === 0 ? "Annil" : this.data.tabbarList[activeIndex].name;
     },
   },
@@ -44,6 +45,7 @@ const tabbar = SubComponent<Root, $Tabbar>()({
   events: {
     tabbar_onActiveIndexChanged(e) {
       const activeIndex = e.detail as ActiveIndex;
+
       this.setActiveIndex(activeIndex);
     },
   },

@@ -9,9 +9,10 @@
     "exactOptionalPropertyTypes": true, // 带有?标志的属性类型不在包含undefined类型
     "strictFunctionTypes": false, // 忽略函数参数逆变引起的问题
     "types": [
+      "annil",
       "hry-types",
-      "mobx",
-      "miniprogram-api-typings"
+      "hry-miniprogram-api-typings",
+      "mobx"
     ]
   },
   "include": [

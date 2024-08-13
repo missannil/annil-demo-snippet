@@ -98,6 +98,7 @@ export type TabbarItem = {
    */
   badge: number;
 };
+
 /*
  * 在页面嵌套组件深度不高时，完全可以直接使用 export type $Tabbar = typeof tabbar;
  * 但是在嵌套组件较深时，可能会出现类型递归超过限制的错误，此时可手动定义类型解决。
@@ -123,5 +124,5 @@ export type $Tabbar = {
 /**
  * 为避免手动定义类型与实际类型不一致，使用 ParamsEqual 进行类型检查,这样在修改组件时,typeof tabbar的类型改变，会导致类型检查不通过
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars 避免eslint中`未使用的变量`报错
+//  @typescript-eslint/no-unused-vars 避免eslint中`未使用的变量`报错
 type checkType = ParamsEqual<typeof tabbar, $Tabbar>;

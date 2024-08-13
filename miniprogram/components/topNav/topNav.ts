@@ -60,5 +60,5 @@ export type $TopNav = {
 /**
  * 为避免手动定义类型与实际类型不一致，使用 ParamsEqual 进行类型检查,这样在修改组件时,typeof tabbar的类型改变，会导致类型检查不通过
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars 避免eslint中`未使用的变量`报错
+
 type checkType = ParamsEqual<typeof topNav, $TopNav>;
